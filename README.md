@@ -6,9 +6,7 @@ SafeLink est une application qui permet de vérifier la sécurité des sites web
 
 - Vérification de la sécurité des sites via l'API VirusTotal.
 - Interface graphique intuitive et simple.
-- Prise en charge de plusieurs thèmes visuels : Anarchiste, Neutre, Manga, VirusTotal, Cyberpunk, Dark Mode, Communiste, Call of Duty, Battlefield.
-- Possibilité de vérifier plusieurs URL simultanément.
-- Disponible en exécutable (`.exe`).
+- Prise en charge de plusieurs thèmes visuels : Anarchiste, Neutre, Manga, VirusTotal, Dark Mode, 
 
 ## Installation
 
