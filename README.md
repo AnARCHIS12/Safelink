@@ -48,9 +48,6 @@ SafeLink permet de choisir parmi différents thèmes visuels :
 - **VirusTotal** : Thème sombre inspiré du site VirusTotal.
 - **Cyberpunk** : Couleurs néon avec un style futuriste.
 - **Dark Mode** : Thème sombre pour les utilisateurs préférant une interface sombre.
-- **Communiste** : Rouge et jaune.
-- **Call of Duty** : Thème basé sur les couleurs militaires et sombres.
-- **Battlefield** : Thème sombre avec des touches de jaune.
 
 ### Contribuer
 Les contributions sont les bienvenues ! N'hésitez pas à forker ce projet et à soumettre des pull requests.
