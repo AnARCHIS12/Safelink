@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SafeLink, une application de bureau rouge et noire pour vérifier des URLs avec l'API VirusTotal.">
+    <title>SafeLink</title>
+    <link rel="icon" href="assets/safelink-logo.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="SafeLink">
+        <img src="assets/safelink-logo-mark.png" alt="" width="40" height="40">
+        <span>SafeLink</span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <a href="#features">Fonctions</a>
+        <a href="#download">Téléchargements</a>
+        <a href="#install">Installation</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Application de vérification d'URLs</p>
+          <h1>SafeLink</h1>
+          <p class="lead">
+            Une interface de bureau en CustomTkinter pour vérifier plusieurs liens avec VirusTotal,
+            lire les résultats au même endroit, puis les copier en un clic.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#download">Télécharger</a>
+            <a class="button secondary" href="#features">Découvrir</a>
+          </div>
+        </div>
+
+        <div class="product-shot" aria-label="Aperçu de l'application SafeLink">
+          <div class="window-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="app-preview">
+            <div class="preview-header">
+              <img src="assets/safelink-logo-mark.png" alt="" width="58" height="58">
+              <div>
+                <strong>SafeLink</strong>
+                <small>Vérification d'URLs avec VirusTotal</small>
+              </div>
+              <em>Prêt</em>
+            </div>
+            <div class="preview-grid">
+              <div class="preview-panel">
+                <h2>Analyse</h2>
+                <div class="input-line"></div>
+                <div class="textarea-lines">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="preview-button"></div>
+              </div>
+              <div class="preview-panel">
+                <h2>Résultats</h2>
+                <p>example.com</p>
+                <p class="safe">Fiable (0/92 détections)</p>
+                <p>site-suspect.test</p>
+                <p class="danger">Risque détecté (3/92)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Fonctions</p>
+          <h2>Une app simple pour vérifier vite.</h2>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <h3>Analyse multiple</h3>
+            <p>Collez une URL par ligne et lancez une analyse complète depuis une seule fenêtre.</p>
+          </article>
+          <article>
+            <h3>Interface claire</h3>
+            <p>Design rouge/noir, résultats intégrés, barre de progression et état visible.</p>
+          </article>
+          <article>
+            <h3>Résultats copiables</h3>
+            <p>Copiez le rapport obtenu pour le partager ou le garder dans vos notes.</p>
+          </article>
+          <article>
+            <h3>Clé mémorisée</h3>
+            <p>Activez la mémorisation locale pour retrouver votre clé API au prochain lancement.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="download" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Téléchargements</p>
+          <h2>Prendre la dernière version.</h2>
+          <p>
+            Les liens pointent vers la dernière release GitHub et sont mis à jour automatiquement
+            quand le workflow publie une nouvelle version.
+          </p>
+        </div>
+        <div class="download-grid">
+          <a class="download-card" data-download="SafeLink-windows-x64.exe" href="#">
+            <img src="assets/platform-windows.svg" alt="Logo Windows" width="54" height="54">
+            <div>
+              <strong>Windows</strong>
+              <span>SafeLink-windows-x64.exe</span>
+            </div>
+          </a>
+          <a class="download-card" data-download="safelink_amd64.deb" href="#">
+            <img src="assets/platform-debian.svg" alt="Logo Debian" width="54" height="54">
+            <div>
+              <strong>Debian / Ubuntu</strong>
+              <span>safelink_amd64.deb</span>
+            </div>
+          </a>
+          <a class="download-card" data-download="safelink-fedora-x86_64.rpm" href="#">
+            <img src="assets/platform-fedora.svg" alt="Logo Fedora" width="54" height="54">
+            <div>
+              <strong>Fedora</strong>
+              <span>safelink-fedora-x86_64.rpm</span>
+            </div>
+          </a>
+        </div>
+        <p class="release-link">
+          <a id="all-releases" href="#">Voir toutes les releases</a>
+        </p>
+      </section>
+
+      <section id="install" class="section split">
+        <div>
+          <p class="eyebrow">Installation</p>
+          <h2>Lancer SafeLink depuis le code source.</h2>
+          <p>
+            SafeLink demande Python, une clé API VirusTotal et quelques dépendances Python.
+          </p>
+        </div>
+        <pre><code>pip install requests customtkinter pillow
+python SafeLink-1.01.py</code></pre>
+      </section>
+    </main>
+
+    <footer>
+      <img src="assets/safelink-logo-mark.png" alt="" width="30" height="30">
+      <span>SafeLink 1.0.1</span>
+    </footer>
+    <script>
+      const repositoryOwner = "AnARCHIS12";
+      const repositoryName = "Safelink";
+      const hostParts = window.location.hostname.split(".");
+      const pageRepo = window.location.pathname.split("/").filter(Boolean)[0];
+      const isGitHubPages = window.location.hostname.endsWith(".github.io");
+      const repo = isGitHubPages && pageRepo ? pageRepo : repositoryName;
+      const owner = isGitHubPages && hostParts[0] ? hostParts[0] : repositoryOwner;
+      const releaseBase = `https://github.com/${owner}/${repo}/releases/latest`;
+      const downloadBase = `${releaseBase}/download`;
+
+      document.querySelectorAll("[data-download]").forEach((link) => {
+        link.href = `${downloadBase}/${link.dataset.download}`;
+      });
+
+      document.getElementById("all-releases").href = releaseBase;
+    </script>
+  </body>
+</html>

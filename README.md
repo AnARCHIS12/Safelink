@@ -1,53 +1,108 @@
 # SafeLink
 
-SafeLink est une application qui permet de vérifier la sécurité des sites web via l'API VirusTotal. Vous pouvez vérifier plusieurs sites en même temps et recevoir une évaluation sur la sécurité de chaque URL.
+<p align="center">
+  <img src="assets/safelink-logo.svg" alt="Logo SafeLink" width="150">
+</p>
+
+SafeLink est une application de bureau qui vérifie la réputation d'URLs avec l'API VirusTotal. Elle permet d'analyser plusieurs liens à la fois et d'afficher les résultats directement dans l'interface.
+
+Dépôt GitHub : <https://github.com/AnARCHIS12/Safelink>
 
 ## Fonctionnalités
 
-- Vérification de la sécurité des sites via l'API VirusTotal.
-- Interface graphique intuitive et simple.
-- Prise en charge de plusieurs thèmes visuels : Anarchiste, Neutre, Manga, VirusTotal, Dark Mode, 
+- Interface moderne en CustomTkinter.
+- Design rouge/noir avec logo intégré.
+- Vérification de plusieurs URLs en une seule analyse.
+- Résultats affichés dans l'application.
+- Barre de progression et statut d'analyse.
+- Bouton pour copier les résultats.
+- Bouton pour effacer la saisie.
+- Mémorisation locale optionnelle de la clé API.
 
-## Installation
+## Prérequis
 
-### Prérequis
+- Python 3.x.
+- Une clé API VirusTotal.
+- Les dépendances Python :
 
-- Python 3.x (si vous exécutez depuis le code source).
-- Une clé API VirusTotal (instructions ci-dessous).
-- Avoir Requests ( en mode python ) 
+```bash
+pip install requests customtkinter pillow
+```
 
-### Obtenir une clé API VirusTotal
+## Obtenir une clé API VirusTotal
 
-1. Rendez-vous sur [https://www.virustotal.com/](https://www.virustotal.com/).
-2. Créez un compte gratuitement et suivez les étapes de confirmation.
-3. Une fois connecté, accédez à votre tableau de bord utilisateur.
-4. Dans la section "API Key", copiez votre clé API.
-5. Collez cette clé dans l'application lorsque cela vous est demandé.
+1. Rendez-vous sur [virustotal.com](https://www.virustotal.com/).
+2. Créez un compte ou connectez-vous.
+3. Ouvrez votre espace utilisateur.
+4. Copiez votre clé dans la section API Key.
+5. Collez cette clé dans SafeLink.
 
 ## Utilisation
 
-### Via l'exécutable
+Lancez la version 1.0.1 :
 
-1. Ouvrez le fichier `SafeLink.exe`.
-2. Entrez votre clé API VirusTotal dans le champ dédié.
-3. Saisissez les URL à vérifier (une par ligne).
-4. Cliquez sur "Vérifier" pour obtenir les résultats.
+```bash
+python SafeLink-1.01.py
+```
 
-### Via le code source
+Ensuite :
 
-1. Exécutez le script Python :
-   ```bash
-   python Safelink.py
-## Personnalisation des thèmes
+1. Collez votre clé API VirusTotal.
+2. Saisissez une URL par ligne.
+3. Cliquez sur **Vérifier**.
+4. Consultez ou copiez les résultats.
 
-SafeLink permet de choisir parmi différents thèmes visuels :
+Si vous cochez **Mémoriser la clé API localement**, SafeLink garde la clé dans le fichier de configuration utilisateur afin de la recharger au prochain lancement.
 
-- **Anarchiste** : Rouge et noir.
-- **Neutre** : Couleurs sobres et simples.
-- **Manga** : Couleurs douces inspirées des mangas.
-- **VirusTotal** : Thème sombre inspiré du site VirusTotal.
-- **Cyberpunk** : Couleurs néon avec un style futuriste.
-- **Dark Mode** : Thème sombre pour les utilisateurs préférant une interface sombre.
+## GitHub Pages
 
-### Contribuer
-Les contributions sont les bienvenues ! N'hésitez pas à forker ce projet et à soumettre des pull requests.
+Une page de présentation est prête dans `docs/`.
+
+Pour l'activer sur GitHub :
+
+1. Ouvrez les paramètres du dépôt.
+2. Allez dans **Pages**.
+3. Choisissez la branche principale.
+4. Sélectionnez le dossier `/docs`.
+5. Enregistrez.
+
+La page contient une section **Téléchargements** qui pointe vers la dernière release GitHub :
+
+- Windows : `SafeLink-windows-x64.exe`
+- Debian/Ubuntu : `safelink_amd64.deb`
+- Fedora : `safelink-fedora-x86_64.rpm`
+
+## Releases automatiques
+
+Le workflow `.github/workflows/release.yml` compile SafeLink et crée une release GitHub.
+
+Il se lance :
+
+- automatiquement quand vous poussez un tag `v*`, par exemple `v1.0.1` ;
+- manuellement depuis l'onglet **Actions** avec un numéro de version.
+
+Exemple :
+
+```bash
+git tag v1.0.1
+git push origin v1.0.1
+```
+
+La release contient :
+
+- un exécutable Windows `.exe` ;
+- un paquet Debian/Ubuntu `.deb` ;
+- un paquet Fedora `.rpm`.
+
+## Fichiers du logo
+
+Le logo est disponible dans `assets/` :
+
+- `assets/safelink-logo.svg` : source vectorielle pour le README.
+- `assets/safelink-logo.png` : version carrée du logo.
+- `assets/safelink-logo-mark.png` : version transparente utilisée dans l'interface.
+- `assets/safelink-logo.ico` : icône utilisée par la fenêtre.
+
+## Note
+
+SafeLink utilise l'API publique VirusTotal v2. Les limites d'utilisation dépendent de votre compte VirusTotal.

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=SafeLink
+Comment=Verifier des URLs avec VirusTotal
+Exec=/opt/safelink/SafeLink
+Icon=safelink
+Terminal=false
+Categories=Network;Security;

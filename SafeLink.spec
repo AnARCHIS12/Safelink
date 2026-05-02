@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['SafeLink.py'],
+    ['SafeLink-1.01.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('assets', 'assets')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
