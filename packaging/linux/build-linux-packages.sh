@@ -53,16 +53,19 @@ build_rpm() {
   local spec="${topdir}/SPECS/${APP_NAME}.spec"
 
   install_common_files "${root}"
-  mkdir -p "${topdir}/"{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS} "${tar_dir}"
+  mkdir -p "${topdir}/"{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS,TMP} "${tar_dir}"
   cp -a "${root}/." "${tar_dir}/"
   tar -C "${BUILD_DIR}" -czf "${topdir}/SOURCES/${APP_NAME}-${VERSION}.tar.gz" "${APP_NAME}-${VERSION}"
 
   cat > "${spec}" <<SPEC
+%global debug_package %{nil}
+
 Name: ${APP_NAME}
 Version: ${VERSION}
 Release: 1%{?dist}
 Summary: SafeLink URL reputation checker
 License: MIT
+Source0: %{name}-%{version}.tar.gz
 BuildArch: x86_64
 Requires: glibc
 Requires: libX11
@@ -84,9 +87,13 @@ cp -a opt usr %{buildroot}/
 /opt/safelink/SafeLink
 /usr/share/applications/safelink.desktop
 /usr/share/icons/hicolor/512x512/apps/safelink.png
+
+%changelog
+* Sat May 02 2026 SafeLink <noreply@example.com> - ${VERSION}-1
+- Build SafeLink release package.
 SPEC
 
-  rpmbuild --define "_topdir ${topdir}" -bb "${spec}"
+  rpmbuild --define "_topdir ${topdir}" --define "_tmppath ${topdir}/TMP" -bb "${spec}"
   cp "${topdir}/RPMS/x86_64/${APP_NAME}-${VERSION}-1."*.x86_64.rpm "${PKG_DIR}/${APP_NAME}-${VERSION}-fedora-x86_64.rpm"
   cp "${PKG_DIR}/${APP_NAME}-${VERSION}-fedora-x86_64.rpm" "${PKG_DIR}/${APP_NAME}-fedora-x86_64.rpm"
 }
