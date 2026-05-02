@@ -94,7 +94,13 @@ cp -a opt usr %{buildroot}/
 SPEC
 
   rpmbuild --define "_topdir ${topdir}" --define "_tmppath ${topdir}/TMP" -bb "${spec}"
-  cp "${topdir}/RPMS/x86_64/${APP_NAME}-${VERSION}-1."*.x86_64.rpm "${PKG_DIR}/${APP_NAME}-${VERSION}-fedora-x86_64.rpm"
+  local rpm_file
+  rpm_file="$(find "${topdir}/RPMS/x86_64" -maxdepth 1 -type f -name "${APP_NAME}-${VERSION}-1*.x86_64.rpm" | sort | head -n 1)"
+  if [[ -z "${rpm_file}" ]]; then
+    echo "No RPM package was produced in ${topdir}/RPMS/x86_64" >&2
+    exit 1
+  fi
+  cp "${rpm_file}" "${PKG_DIR}/${APP_NAME}-${VERSION}-fedora-x86_64.rpm"
   cp "${PKG_DIR}/${APP_NAME}-${VERSION}-fedora-x86_64.rpm" "${PKG_DIR}/${APP_NAME}-fedora-x86_64.rpm"
 }
 
