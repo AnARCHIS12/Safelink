@@ -34,15 +34,39 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
 
+class InvalidApiResponse(ValueError):
+    pass
+
+
 def check_website(api_key, url):
     params = {
         "apikey": api_key,
         "resource": url,
         "allinfo": "false",
     }
-    response = requests.get(API_URL, params=params, timeout=20)
+    response = requests.get(
+        API_URL,
+        params=params,
+        headers={"Accept": "application/json"},
+        timeout=20,
+    )
     response.raise_for_status()
-    return response.json()
+
+    if not response.content.strip():
+        raise InvalidApiResponse(
+            "VirusTotal a renvoyé une réponse vide. Vérifiez les limites de l'API "
+            "ou réessayez plus tard."
+        )
+
+    try:
+        return response.json()
+    except ValueError as error:
+        content_type = response.headers.get("content-type", "type inconnu")
+        content_type = content_type.split(";", maxsplit=1)[0] or "type inconnu"
+        raise InvalidApiResponse(
+            f"VirusTotal a renvoyé une réponse non JSON ({content_type}). "
+            "Vérifiez la clé API ou réessayez plus tard."
+        ) from error
 
 
 def evaluate_site(result):
@@ -477,6 +501,8 @@ class SafeLinkApp(ctk.CTk):
                 result = check_website(api_key, url)
                 evaluation = evaluate_site(result)
                 results.append(f"{url}\n  {evaluation}")
+            except InvalidApiResponse as error:
+                results.append(f"{url}\n  Réponse VirusTotal invalide: {error}")
             except requests.RequestException as error:
                 results.append(f"{url}\n  Erreur réseau: {error}")
             except ValueError:
